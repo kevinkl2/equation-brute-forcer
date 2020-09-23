@@ -32,9 +32,8 @@ def generateEquation(variables, values, operators):
             parenthesesCounter -= openParens
 
         equation.append(i)
-        for valueSet in values:
-            for a in equationWithValues:
-                a.append(valueSet[i])
+        for a in range(0,len(equationWithValues)):
+            equationWithValues[a].append(values[a][i])
 
         if (openParenthesesCounter > 0):
             closedParens = random.randint(0,openParenthesesCounter)
@@ -98,11 +97,11 @@ if __name__ == "__main__":
 
     iterations = defaultdict(int)
     potentialSolutions = []
-    #[c*i + e*(a + b + d + g) + f + h, b*c + e*(a + d + f + i) + g + h, a + b + e*(c + d*(f + i)) + g + h, d*e*f + g + h*(a + i*(b + c)), a + b + c*i + e*(d + f + g) + h, a + b + e*(c*i + d*f) + g + h, d*(a + b + c*e + f + g) + h + i, e*(a + b*c + d + i) + f + g + h, e*(c + d*(a + b + i)) + f + g + h]
     variables = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
-    values = [{"a":"10", "b":"5", "c":"3", "d":"1.5", "e":"1.75", "f":"15", "g":"20", "h":"1.02", "i":"2"}]
+    values = [{"a":"10", "b":"5", "c":"3", "d":"1.5", "e":"1.75", "f":"15", "g":"20", "h":"1.02", "i":"2"},
+              {"a":"5", "b":"4", "c":"3", "d":"1.5", "e":"1.5", "f":"3.5", "g":"0", "h":"1.08", "i":"2"}]
     operators = ["+", "*"]
-    goals = [85.895]
+    goals = [85.895, 34.940000000000005]
     
     for threadNumber in range(1,threadCount+1):
         threads.append(Thread(target=findSolutions, args=(variables, values, operators, goals, threadNumber,)))
