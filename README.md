@@ -1,6 +1,6 @@
 # equation-brute-forcer
 
-Bogosort implementation of equation brute forcer.
+Bogosort-like implementation for brute-forcing equations.
 
 Given 9 variables, their values, and a final result, produce an equation that fits those parameters.
 
