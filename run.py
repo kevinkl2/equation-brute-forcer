@@ -91,7 +91,7 @@ if __name__ == "__main__":
     global iterations
     global potentialSolutions 
 
-    threadCount = 8
+    threadCount = 1
     threads = []
     event = Event()
 
