@@ -91,17 +91,16 @@ if __name__ == "__main__":
     global iterations
     global potentialSolutions 
 
-    threadCount = 1
+    threadCount = 8
     threads = []
     event = Event()
 
     iterations = defaultdict(int)
     potentialSolutions = []
-    variables = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
-    values = [{"a":"10", "b":"5", "c":"3", "d":"1.5", "e":"1.75", "f":"15", "g":"20", "h":"1.02", "i":"2"},
-              {"a":"5", "b":"4", "c":"3", "d":"1.5", "e":"1.5", "f":"3.5", "g":"0", "h":"1.08", "i":"2"}]
+    variables = ['baseDamage', 'smite', 'vigor', 'agilityConst']
+    values = [{"baseDamage":"3", "smite":"5", "vigor":"1.02", "agilityConst":"1"}]
     operators = ["+", "*"]
-    goals = [85.895, 34.940000000000005]
+    goals = [10.076]
     
     for threadNumber in range(1,threadCount+1):
         threads.append(Thread(target=findSolutions, args=(variables, values, operators, goals, threadNumber,)))
