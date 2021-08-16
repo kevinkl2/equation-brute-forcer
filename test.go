@@ -7,7 +7,7 @@ import (
 
 // TESTING FILE
 
-func main() {
+func main1() {
 	expression, err := govaluate.NewEvaluableExpression("h*(d*e*(a + b + c) + f + g) + i")
 	if err != nil {
 		log.Println(err)
