@@ -4,6 +4,7 @@ from sympy import *
 from threading import Thread, Event
 from time import sleep
 from collections import defaultdict
+import datetime
 
 def clear():   
     if name == 'nt': 
@@ -63,7 +64,9 @@ def validateEquation(equationWithValues, goals):
 def findSolutions(variables, values, operators, goals, threadNumber):
     loopCounter = 0
 
-    while loopCounter != 1000000000:
+    start = datetime.datetime.now()
+
+    while loopCounter != 100000:
         if event.is_set():
             break
 
@@ -79,6 +82,8 @@ def findSolutions(variables, values, operators, goals, threadNumber):
                     potentialSolutions.append(simplified)
         except Exception as e:
             print(e)
+    
+    print(datetime.datetime.now()-start)
 
 def printSolutions(iterations, potentialSolutions):
     clear()
@@ -91,7 +96,7 @@ if __name__ == "__main__":
     global iterations
     global potentialSolutions 
 
-    threadCount = 8
+    threadCount = 1
     threads = []
     event = Event()
 
@@ -110,7 +115,7 @@ if __name__ == "__main__":
 
     while True:
         try:
-            printSolutions(iterations, potentialSolutions)
+            # printSolutions(iterations, potentialSolutions)
             sleep(1)
         except KeyboardInterrupt:
             event.set()
