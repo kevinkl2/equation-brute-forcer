@@ -26,7 +26,7 @@ func printSolutions() {
 		for solution, _ := range solutions {
 			keys = append(keys, solution)
 		}
-		log.Printf("Found Solutions: %v", strings.Join(keys, ","))
+		log.Printf("Found Solutions: %v", strings.Join(keys, ", "))
 
 		time.Sleep(1 * time.Second)
 	}

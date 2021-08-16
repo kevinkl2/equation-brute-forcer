@@ -84,6 +84,6 @@ func simplifyEquation(equations <-chan []string) {
 		if err != nil {
 			log.Println(err)
 		}
-		solutions[string(out)] = true
+		solutions[strings.TrimRight(string(out), "\r\n")] = true
 	}
 }

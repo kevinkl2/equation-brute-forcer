@@ -29,9 +29,10 @@ func findSolutions(counter chan<- bool, equations chan<- []string, wg *sync.Wait
 }
 
 func main() {
-	counter := make(chan bool, 15)
-	equations := make(chan []string, 15)
-	solutions = make(map[string]bool)
+	workerCount := 1
+	counter := make(chan bool, workerCount*5)
+	equations := make(chan []string, workerCount*5)
+	solutions = make(map[string]bool, workerCount*5)
 	//variables = []string{"baseDamage", "smite", "vigor", "agilityConst", "agilityMult"}
 	//values = []map[string]interface{}{
 	//	{
@@ -53,12 +54,12 @@ func main() {
 	}
 	operators = []string{"+", "*"}
 	//goals = []float64{10.076}
-	goals = []float64{85.895, 35.33}
+	goals = []float64{85.895, 34.940000000000005}
 
 	rand.Seed(time.Now().UnixNano())
 	var wg sync.WaitGroup
 
-	for i := 0; i < 4; i++ {
+	for i := 0; i < workerCount; i++ {
 		wg.Add(1)
 		go findSolutions(counter, equations, &wg)
 	}
