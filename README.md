@@ -33,3 +33,16 @@ goals = []float64{85.895, 35.33}
 
 equation = e*(a + b*c + d + i) + f + g + h
 ```
+
+```go
+	variables = []string{"baseDamage", "smite", "vigor", "agilityConst", "agilityMult"}
+	values = []map[string]interface{}{
+		{
+			"baseDamage":   3,
+			"smite":        5,
+			"vigor":        1.02,
+			"agilityConst": 1,
+			"agilityMult":  1.1,
+		},
+	}
+```
